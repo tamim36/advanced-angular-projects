@@ -13,7 +13,7 @@ import { TasksComponent } from "./tasks/tasks.component";
 export class AppComponent {
   title = 'easy-task-management';
   users = DUMMY_USERS;
-  selectedUserId = 'u9';
+  selectedUserId? : string;
 
   get selectedUser(){
     return this.users.find(user => user.id === this.selectedUserId);
