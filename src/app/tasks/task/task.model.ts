@@ -6,6 +6,14 @@ export interface Task {
     title: string,
 
     summary: string,
-    
+
+    dueDate: string
+}
+
+export interface NewTaskDto {
+    title: string,
+
+    summary: string,
+
     dueDate: string
 }
