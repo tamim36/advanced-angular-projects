@@ -1,12 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { dummyTasks } from '../../data/dummy-tasks';
-type Task = {
-    id: string,
-    userId: string,
-    title: string,
-    summary: string,
-    dueDate: string
-}
+import { Task } from './task.model';
 
 @Component({
   selector: 'app-task',

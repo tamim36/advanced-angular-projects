@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
 import { dummyTasks } from '../data/dummy-tasks';
+import { User } from '../user/user.model';
 
 @Component({
   selector: 'app-tasks',
@@ -9,12 +10,10 @@ import { dummyTasks } from '../data/dummy-tasks';
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
-  @Input() user?: any;
+  @Input({required: true}) user!: User;
   tasks = dummyTasks;
 
   get userSpecificTasks(){
-    const taskData = this.tasks.filter(task => task.userId === this.user.id)!;
-    console.log(taskData);
-    return taskData;
+    return this.tasks.filter(task => task.userId === this.user.id)!;
   }
 }
