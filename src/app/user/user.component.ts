@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { type User } from './user.model';
 
 
@@ -17,14 +17,15 @@ import { type User } from './user.model';
 })
 export class UserComponent {
   @Input({required: true}) user!: User;
-  
   @Output() selectedUser = new EventEmitter<string>();
+  @Input({required: true}) isSelected! : boolean;
 
   get userImagePath() {
     return 'assets/users/' + this.user.avatar;
   }
 
   onUserClicked(){
+    this.isSelected = true;
     this.selectedUser.emit(this.user.id);
   }
 }
