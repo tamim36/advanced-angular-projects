@@ -16,4 +16,8 @@ export class TasksComponent {
   get userSpecificTasks(){
     return this.tasks.filter(task => task.userId === this.user.id)!;
   }
+
+  removeCompletedTask(taskId : string){
+    this.tasks = this.tasks.filter(t => t.id !== taskId);
+  }
 }
