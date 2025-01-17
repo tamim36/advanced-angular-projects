@@ -1,59 +1,51 @@
-# EasyTaskManagement
+# EasyTask Management  
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+A simple yet powerful task management application built with **Angular 19**. EasyTask Management allows you to manage tasks for different users efficiently. The application leverages **localStorage** for simplicity in storing and managing data.  
 
-## Development server
+## Features  
 
-To start a local development server, run:
+- **User Task Management**  
+  - View the task list of any user.  
+  - Mark tasks as completed (completed tasks are automatically removed).  
+  - Add new tasks for any user.  
 
-```bash
-ng serve
-```
+- **Persistent Storage**  
+  - Data is stored locally in the browser using `localStorage`.  
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Clean and Intuitive UI**  
+  - User-friendly interface for managing tasks seamlessly.  
 
-## Code scaffolding
+## Screenshots  
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Task List View  
+Displays the tasks for the selected user. Tasks can be marked as completed directly from this view.  
 
-```bash
-ng generate component component-name
-```
+![Task List View](./ScreenShots/easy-taskmanagement-task-list.png)  
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Add Task Form  
+Simple form to add a new task for the selected user.  
 
-```bash
-ng generate --help
-```
+![Add Task Form](./ScreenShots/easy-taskmanagement-add-task-form.png)  
 
-## Building
+## Installation  
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Clone the repository:  
+   ```bash  
+   git clone https://github.com/your-username/easytask-management.git  
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd easytask-management
+    ```  
+3. Install dependencies:
+    ```bash
+    npm install
+    ```  
+4. Start the development server:
+    ```bash
+    ng serve
+    ```  
+5. Open the application in your browser at:
+    ```bash
+    http://localhost:4200
+    ```  
