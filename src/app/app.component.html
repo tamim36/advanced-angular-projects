@@ -1,5 +1,10 @@
 <app-header />
 
 <main>
-  <app-user-input />
+  <app-user-input (userInputEvent)="calculateInvestment($event)" />
+
+  @if (showInvestmentTable) {
+    <app-investment-results />
+  }
+  
 </main>

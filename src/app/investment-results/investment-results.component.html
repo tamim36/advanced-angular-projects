@@ -1,1 +1,24 @@
-<p>investment-results works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Interest</th>
+      <th>End of Year Value</th>
+      <th>Annual Investment</th>
+      <th>Total Interest</th>
+      <th>Total Amount Invested</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of InvestmentData; track item.year) {
+    <tr>
+      <td>{{ item.year }}</td>
+      <td>{{ item.interest | number: '1.0-0' }}</td>
+      <td>{{ item.valueEndOfYear | number: '1.0-0' }}</td>
+      <td>{{ item.annualInvestment | number: '1.0-0'}}</td>
+      <td>{{ item.totalInterest | number: '1.0-0' }}</td>
+      <td>{{ item.totalAmountInvested | number: '1.0-0' }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
