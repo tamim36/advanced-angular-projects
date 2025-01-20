@@ -11,10 +11,10 @@ import { type UserInputModel } from './user-input.model';
 })
 export class UserInputComponent {
   @Output() userInputEvent = new EventEmitter<UserInputModel>();
-  initialInvestment = 0;
-  annualInvestment = 0;
-  expectedReturn = 0;
-  durationInMonth = 0;
+  initialInvestment = 1000;
+  annualInvestment = 50;
+  expectedReturn = 5;
+  durationInMonth = 12;
 
   onSubmit() {
     const model: UserInputModel = {

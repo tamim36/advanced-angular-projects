@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { InvestmentResultsService } from './investment-results.service';
-import { CommonModule } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'app-investment-results',
-  imports: [CommonModule],
+  imports: [CurrencyPipe],
   templateUrl: './investment-results.component.html',
   styleUrl: './investment-results.component.css'
 })
 export class InvestmentResultsComponent {
-  constructor(private investmentService: InvestmentResultsService) { }
+  private investmentService = inject(InvestmentResultsService);
 
-  get InvestmentData(){
-    return this.investmentService.InvestmentAnnualData;
-  }
+  InvestmentData = this.investmentService.annualInvestmentData.asReadonly();
 
 }
