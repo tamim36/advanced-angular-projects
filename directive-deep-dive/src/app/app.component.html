@@ -4,4 +4,9 @@
   <hr />
 
   <app-auth />
+
+  @if (isAdmin()) {
+    <p>Only Admin will see this</p>
+  }
+
 </main>
