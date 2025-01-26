@@ -6,7 +6,11 @@ import { WeatherWidgetComponent } from './widgets/weather-widget/weather-widget.
   standalone: true,
   imports: [WeatherWidgetComponent],
   template: `
-    <weather-widget></weather-widget>
+    <weather-widget [headerTemplet]="altWidgetHeader"></weather-widget>
+
+    <ng-template #altWidgetHeader>
+      <div class="alt-header">Yoo Today's Weather</div>
+    </ng-template>
   `,
   styles: [`
     :host {
