@@ -1,4 +1,4 @@
-import { Component, inject, Input, TemplateRef } from '@angular/core';
+import { Component, inject, Injector, Input, TemplateRef } from '@angular/core';
 import { WidgetActions } from '../widget-actions.service';
 import { WidgetState } from '../widget-state.service';
 import { NgTemplateOutlet } from '@angular/common';
@@ -33,8 +33,16 @@ import { NgTemplateOutlet } from '@angular/common';
       
     </div>
     <div class="widget-actions">
-      <button (click)="actions.reload()">Reload</button>
-      <button (click)="actions.copyData()">Copy Info</button>
+      <ng-container 
+        [ngTemplateOutlet]="actionTemplate || defaultWidgetAction"
+        [ngTemplateOutletInjector]="weatherWidgetInjector"
+      ></ng-container>
+
+      <ng-template #defaultWidgetAction>
+        <button (click)="actions.reload()">Reload</button>
+        <button (click)="actions.copyData()">Copy Info</button>
+      </ng-template>
+
     </div>
   `,
   styleUrls: ['./weather-widget.component.css'],
@@ -43,7 +51,9 @@ import { NgTemplateOutlet } from '@angular/common';
 export class WeatherWidgetComponent {
   @Input() headerTemplet! : TemplateRef<any>;
   @Input() contentTemplate! : TemplateRef<{ $implicit: WidgetState }>;
-
+  @Input() actionTemplate! : TemplateRef<any>;
+ 
   state = inject(WidgetState);
   actions = inject(WidgetActions);
+  weatherWidgetInjector = inject(Injector);
 }

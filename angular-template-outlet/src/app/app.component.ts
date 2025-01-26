@@ -1,27 +1,32 @@
 import { Component } from '@angular/core';
 import { WeatherWidgetComponent } from './widgets/weather-widget/weather-widget.component';
+import { WeatherCustomActionComponent } from './widgets/weather-custom-action/weather-custom-action.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [WeatherWidgetComponent],
+  imports: [WeatherWidgetComponent, WeatherCustomActionComponent],
   template: `
     <weather-widget 
       [headerTemplet]="altWidgetHeader"
-      [contentTemplate]="altWidgetContent">
-
-    </weather-widget>
+      [contentTemplate]="altWidgetContent"
+      [actionTemplate]="altWidgetAction"
+      ></weather-widget>
 
     <ng-template #altWidgetHeader>
       <div class="alt-header">Yoo Today's Weather</div>
     </ng-template>
 
     <ng-template #altWidgetContent let-state>
-    <div>
+      <div>
         <span>🌡 {{state.data.temperature}}°C</span> - 
         <span>{{state.data.skyCondition === 'sunny' ? '☀️' : '☁️'}}</span> - 
         <span>🌬️ {{state.data.windspeed}}m/s</span>
       </div>
+    </ng-template>
+
+    <ng-template #altWidgetAction>
+      <app-weather-custom-action></app-weather-custom-action>
     </ng-template>
   `,
   styles: [`
