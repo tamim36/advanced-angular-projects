@@ -20,8 +20,17 @@ import { NgTemplateOutlet } from '@angular/common';
       
     </div>
     <div class="widget-content">
-      <div class="sky-condition">{{ state.data.skyCondition === 'sunny' ? '☀️' : '☁️' }}</div>
-      <div class="temperature">{{state.data.temperature}}°C</div>
+      <ng-container 
+        [ngTemplateOutlet]="contentTemplate || defaultWidgetContent"]
+        [ngTemplateOutletContext]="{ $implicit: state }"
+      ></ng-container>
+
+      <ng-template #defaultWidgetContent>
+        <div class="sky-condition">{{ state.data.skyCondition === 'sunny' ? '☀️' : '☁️' }}</div>
+        <div class="temperature">{{state.data.temperature}}°C</div>
+      </ng-template>
+
+      
     </div>
     <div class="widget-actions">
       <button (click)="actions.reload()">Reload</button>
@@ -33,6 +42,7 @@ import { NgTemplateOutlet } from '@angular/common';
 })
 export class WeatherWidgetComponent {
   @Input() headerTemplet! : TemplateRef<any>;
+  @Input() contentTemplate! : TemplateRef<{ $implicit: WidgetState }>;
 
   state = inject(WidgetState);
   actions = inject(WidgetActions);
