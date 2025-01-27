@@ -1,24 +1,26 @@
-import { computed, Directive, effect, ElementRef, inject, input, OnInit } from '@angular/core';
+import { computed, Directive, effect, ElementRef, inject, input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Permission } from './auth.model';
 import { AuthService } from './auth.service';
 
 @Directive({
-  selector: 'p[appAuth]',
+  selector: '[appAuth]',
   standalone: true
 })
 export class AuthDirective {
   userPermission = input.required<Permission>({ alias: 'appAuth' });
-  private hostElementRef = inject<ElementRef<HTMLParagraphElement>>(ElementRef);
+  
   private authService = inject(AuthService);
+  private templateRef = inject(TemplateRef);
+  private viewContainerRef = inject(ViewContainerRef);
 
   constructor() {
     effect(() => {
       const isShown = computed(() => this.authService.activePermission() === this.userPermission());
       if (!isShown()){
-        this.hostElementRef.nativeElement.hidden = true;
+        this.viewContainerRef.clear();
       }
       else {
-        this.hostElementRef.nativeElement.hidden = false;
+        this.viewContainerRef.createEmbeddedView(this.templateRef);
       }
     });
   }
