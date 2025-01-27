@@ -5,8 +5,10 @@
 
   <app-auth />
 
-  @if (isAdmin()) {
+  <!-- @if (isAdmin()) {
     <p>Only Admin will see this</p>
-  }
+  } -->
+
+  <p appAuth="admin">Only Admin will see this</p>
 
 </main>
